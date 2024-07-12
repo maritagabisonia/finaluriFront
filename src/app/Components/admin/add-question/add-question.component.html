@@ -1,0 +1,15 @@
+<div class="container">
+    <form [formGroup]="QuestionForm">
+        <p-floatLabel class="form-field">
+            <input pInputText id="question" formControlName="question" />
+            <label for="question">Question</label>
+        </p-floatLabel>
+        <p-floatLabel class="form-field">
+            <input pInputText id="answer" formControlName="answer" />
+            <label for="answer">Answer</label>
+        </p-floatLabel>
+        <p-triStateCheckbox id="important" formControlName="important" inputId="tricheckbox"></p-triStateCheckbox>
+        <label for="important">Important</label>
+        <p-button label="Submit" (click)="onSubmit()"></p-button>
+    </form>
+</div>

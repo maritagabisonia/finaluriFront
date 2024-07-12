@@ -1,0 +1,11 @@
+.container{
+    justify-content: center;
+    align-items: center;
+    height: auto; 
+    margin-top: 40px;
+
+}
+.form-field{
+    display: block;
+    margin-bottom: 30px; 
+}
