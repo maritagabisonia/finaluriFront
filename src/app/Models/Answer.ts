@@ -1,10 +1,10 @@
 export class Answer {
     answer: string;
-    questionid: number;
+    question: string;
   
-    constructor(answer: string = '', questionid: number = 0) {
+    constructor(answer: string = '', question: string = '') {
       this.answer = answer;
-      this.questionid = questionid;
+      this.question = question;
     }
   }
   

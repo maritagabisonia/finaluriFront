@@ -1,0 +1,26 @@
+<h3>კითხვების დამატება</h3>
+<div class="add-question">
+    <form [formGroup]="addQuestionForm"  >
+    <div  class="inputText">
+        <label for="Question">კითხვა</label>
+        <input pInputText id="Question" formControlName="question" />
+    </div>
+    <div  class="inputText">
+        <label for="Answer">პასუხი</label>
+        <input pInputText id="Answer" formControlName="answer" />    
+    </div>
+    <!-- <label for="important"> სავალდებულო</label> -->
+    <!-- <p-toggleButton 
+        formControlName="important" 
+        inputId="important" /> -->
+    <div class="checkbox-button">
+        <div class="checkbox-container">
+            <label for="important">სავალდებულო</label>
+            <input type="checkbox" id="important" formControlName="important" />
+        </div>
+        <button (click)="addQuestion()">დამატება</button>
+    </div>
+
+    <!-- <p-button label="Submit" (click)="addQuestion()"/> -->
+    </form>
+</div>

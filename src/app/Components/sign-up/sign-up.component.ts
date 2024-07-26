@@ -8,22 +8,26 @@ import { Router } from '@angular/router';
 import { UserService } from '../../Services/user.service';
 import { SignUp } from '../../Models/SignUp';
 import { PasswordModule } from 'primeng/password';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast'; 
 
 
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FloatLabelModule,InputTextModule,FormsModule,ButtonModule,ReactiveFormsModule,PasswordModule],
+  imports: [FloatLabelModule,InputTextModule,FormsModule,ButtonModule,ReactiveFormsModule,PasswordModule,ToastModule],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+  styleUrl: './sign-up.component.css',
+  providers: [ MessageService]
+
 })
 export class SignUpComponent {
   SignUpForm:FormGroup;
   SignUp: SignUp= new SignUp()
 
 
-  constructor(private fb: FormBuilder,public userService:UserService,private router: Router){
+  constructor(private fb: FormBuilder,public userService:UserService,private router: Router,private messageService: MessageService){
     this.SignUpForm = this.fb.group({
       firstName: ['', this.validateFirstName],
       username:  ['', Validators.required],
@@ -64,7 +68,7 @@ export class SignUpComponent {
     this.userService.registerUser(this.SignUp).subscribe({
       next: res => {
         console.log("res")
-        
+        this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
       },
       error: err => {
         console.error('Error during login:', err);

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Question } from '../Models/Question';
+import { GetQuestion, Question } from '../Models/Question';
 import { Observable } from 'rxjs';
 import { UserForm } from '../Models/UserForm ';
 
@@ -12,11 +12,12 @@ export class QuestionsService {
 
   constructor(public http: HttpClient) { }
 
-  getQuestions(): Observable<Question[]> {
+  getQuestions(): Observable<GetQuestion[]> {
     console.log(1)
-    return this.http.get<Question[]>("https://localhost:7189/api/User/get_questions");
+    return this.http.get<GetQuestion[]>("https://localhost:7189/api/User/get_questions");
 
   };
+
 
   addQuestion(question:Question): Observable<any>{
     let httpOptions = {
@@ -26,7 +27,7 @@ export class QuestionsService {
   };
 
 
-  updateQuestion(question:Question): Observable<any>{
+  updateQuestion(question:GetQuestion): Observable<any>{
     let httpOptions = {
       headers: new HttpHeaders({ "Content-Type": "application/json" })
     };
@@ -39,6 +40,14 @@ export class QuestionsService {
     };
     return this.http.post<any>(`https://localhost:7189/api/User/parse_json_answers`, userForms, httpOptions);
   }
+
+  add_question_ret_list(question:Question): Observable<any>{
+    let httpOptions = {
+      headers: new HttpHeaders({ "Content-Type": "application/json" })
+    };
+    return this.http.post<any>("https://localhost:7189/api/User/add_question_ret_list", question , httpOptions);
+  };
+
 
 
 

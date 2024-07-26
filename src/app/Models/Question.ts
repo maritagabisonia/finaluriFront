@@ -10,3 +10,17 @@ export class Question{
       
     }
 }
+export class GetQuestion{
+    id:number;
+    question: string;
+    answer: string;
+    important:boolean;
+    constructor(  id:number ,  question: string = "" , answer: string = "", important: boolean = true  )
+    {
+        this.id = id;
+        this.question =question;
+        this.answer =answer;
+        this.important = important;
+      
+    }
+}
